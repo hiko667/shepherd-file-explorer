@@ -1,11 +1,11 @@
 #include <stdio.h>
 
 #if defined(_WIN32)
-    #define SYSTEM_NAME "windows"
+    #define SYSTEM_NAME 'w'
 #elif defined(_WIN64)
-    #define SYSTEM_NAME "windows"
+    #define SYSTEM_NAME 'w'
 #elif defined(__CYGWIN__) && !defined(_WIN32)
-    #define SYSTEM_NAME "windows"
+    #define SYSTEM_NAME 'w'
 #elif defined(__linux__)
-    #define SYSTEM_NAME "linux"
+    #define SYSTEM_NAME 'l'
 #endif

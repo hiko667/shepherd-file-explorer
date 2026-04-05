@@ -3,5 +3,5 @@
 
 int main(int argc, char * argv[])
 {
-    printf("%s", SYSTEM_NAME);
+    printf("%s", argv[1]);
 }

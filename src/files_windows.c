@@ -1,0 +1,54 @@
+#include <windows.h>
+#include <stdio.h>
+#include <string.h>
+
+#include "files_windows.h"
+#include "entry.h"
+
+
+void countFilesInDirectory(char * path, int * count){
+    WIN32_FIND_DATA findData;
+    HANDLE hFind = NULL;
+    hFind = FindFirstFile(path, &findData);
+    if (hFind == INVALID_HANDLE_VALUE) count = NULL;
+    while (FindNextFile(hFind, &findData) != 0) (*count) ++;
+    FindClose(hFind);
+}
+
+void readFilesToStruct(struct entry ** readFiles, char * path){
+    WIN32_FIND_DATA findData;
+    HANDLE hFind = NULL;
+    hFind = FindFirstFile(path, &findData);
+    if (hFind == INVALID_HANDLE_VALUE) return;
+    int counter = 0;
+
+    do{
+        if (findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
+            readFiles[counter]->type = (findData.cFileName[0] = '.') ? HIDEN_DIR_ENTRY : DIR_ENTRY;
+        } else {
+            readFiles[counter]->type = (findData.cFileName[0] = '.') ? HIDEN_FILE_ENTRY : FILE_ENTRY;
+        }
+        readFiles[counter]->name = strdup(findData.cFileName);
+        counter++;
+    } while(FindNextFile(hFind, &findData) != 0);
+    FindClose(hFind);
+}
+
+struct entry ** getEntryNames(char * path, int * count){
+    countFilesInDirectory(path, count);
+    struct entry ** readFiles = malloc(sizeof(struct entry *) * (*count));
+    for(int i = 0; i < *count; i++) readFiles[i] = malloc(sizeof(struct entry));
+    readFilesToStruct(readFiles, path);
+    return readFiles;
+}
+
+void freeEntries(struct entry ** entries, int count){
+    if (!entries) return;
+    for (int i = 0; i < count; i++) {
+        if (entries[i]) {
+            free(entries[i]->name); 
+            free(entries[i]);
+        }
+    }
+    free(entries);
+}

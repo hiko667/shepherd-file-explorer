@@ -1,4 +1,4 @@
 all:
-	gcc ./*c -o explorer.exe
+	gcc ./src/*c -o explorer.exe
 run:
 	./explorer.exe
