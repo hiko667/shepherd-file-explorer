@@ -1,7 +1,15 @@
 #include <stdio.h>
 #include "system.h"
+#include "files_windows.h"
+#include "entry.h"
+#include "menu.h"
 
 int main(int argc, char * argv[])
 {
-    printf("%s", argv[1]);
+    int count = 0;
+    struct entry ** files = getEntryNames("C:\\*", &count);
+    if (!files) return -1;
+    runTerminalMenu(files, count);
+    freeEntries(files, count);
+    return 0;
 }

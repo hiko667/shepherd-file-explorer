@@ -11,7 +11,7 @@ void countFilesInDirectory(char * path, int * count){
     HANDLE hFind = NULL;
     hFind = FindFirstFile(path, &findData);
     if (hFind == INVALID_HANDLE_VALUE) count = NULL;
-    while (FindNextFile(hFind, &findData) != 0) (*count) ++;
+    do{(*count) ++;}while (FindNextFile(hFind, &findData) != 0);
     FindClose(hFind);
 }
 
@@ -24,11 +24,11 @@ void readFilesToStruct(struct entry ** readFiles, char * path){
 
     do{
         if (findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
-            readFiles[counter]->type = (findData.cFileName[0] = '.') ? HIDEN_DIR_ENTRY : DIR_ENTRY;
+            readFiles[counter]->type = (findData.cFileName[0] =='.') ? HIDEN_DIR_ENTRY : DIR_ENTRY;
         } else {
-            readFiles[counter]->type = (findData.cFileName[0] = '.') ? HIDEN_FILE_ENTRY : FILE_ENTRY;
+            readFiles[counter]->type = (findData.cFileName[0] == '.') ? HIDEN_FILE_ENTRY : FILE_ENTRY;
         }
-        readFiles[counter]->name = strdup(findData.cFileName);
+        readFiles[counter]->name = _strdup(findData.cFileName);
         counter++;
     } while(FindNextFile(hFind, &findData) != 0);
     FindClose(hFind);

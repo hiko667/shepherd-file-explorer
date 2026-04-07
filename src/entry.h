@@ -1,5 +1,6 @@
 #ifndef ENTRY_H
 #define ENTRY_H
+
 enum entryTypes {
     DIR_ENTRY,
     FILE_ENTRY,
