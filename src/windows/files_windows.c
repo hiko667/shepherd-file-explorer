@@ -3,7 +3,6 @@
 #include <string.h>
 
 #include "files_windows.h"
-#include "entry.h"
 
 
 void countFilesInDirectory(char * path, int * count){
