@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include "system.h"
-#include "files_windows.h"
+#include "files.h"
 #include "entry.h"
-#include "menu.h"
+#include "terminal_menu.h"
 
 int main(int argc, char * argv[])
 {

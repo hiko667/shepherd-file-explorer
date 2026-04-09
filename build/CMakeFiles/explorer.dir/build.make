@@ -71,11 +71,26 @@ include CMakeFiles/explorer.dir/flags.make
 CMakeFiles/explorer.dir/codegen:
 .PHONY : CMakeFiles/explorer.dir/codegen
 
+CMakeFiles/explorer.dir/src/common/files.c.obj: CMakeFiles/explorer.dir/flags.make
+CMakeFiles/explorer.dir/src/common/files.c.obj: CMakeFiles/explorer.dir/includes_C.rsp
+CMakeFiles/explorer.dir/src/common/files.c.obj: C:/Users/stani/Desktop/explorer/src/common/files.c
+CMakeFiles/explorer.dir/src/common/files.c.obj: CMakeFiles/explorer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\stani\Desktop\explorer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/explorer.dir/src/common/files.c.obj"
+	C:\msys64\ucrt64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/explorer.dir/src/common/files.c.obj -MF CMakeFiles\explorer.dir\src\common\files.c.obj.d -o CMakeFiles\explorer.dir\src\common\files.c.obj -c C:\Users\stani\Desktop\explorer\src\common\files.c
+
+CMakeFiles/explorer.dir/src/common/files.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/explorer.dir/src/common/files.c.i"
+	C:\msys64\ucrt64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\stani\Desktop\explorer\src\common\files.c > CMakeFiles\explorer.dir\src\common\files.c.i
+
+CMakeFiles/explorer.dir/src/common/files.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/explorer.dir/src/common/files.c.s"
+	C:\msys64\ucrt64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\stani\Desktop\explorer\src\common\files.c -o CMakeFiles\explorer.dir\src\common\files.c.s
+
 CMakeFiles/explorer.dir/src/common/main.c.obj: CMakeFiles/explorer.dir/flags.make
 CMakeFiles/explorer.dir/src/common/main.c.obj: CMakeFiles/explorer.dir/includes_C.rsp
 CMakeFiles/explorer.dir/src/common/main.c.obj: C:/Users/stani/Desktop/explorer/src/common/main.c
 CMakeFiles/explorer.dir/src/common/main.c.obj: CMakeFiles/explorer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\stani\Desktop\explorer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/explorer.dir/src/common/main.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\stani\Desktop\explorer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/explorer.dir/src/common/main.c.obj"
 	C:\msys64\ucrt64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/explorer.dir/src/common/main.c.obj -MF CMakeFiles\explorer.dir\src\common\main.c.obj.d -o CMakeFiles\explorer.dir\src\common\main.c.obj -c C:\Users\stani\Desktop\explorer\src\common\main.c
 
 CMakeFiles/explorer.dir/src/common/main.c.i: cmake_force
@@ -86,26 +101,26 @@ CMakeFiles/explorer.dir/src/common/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/explorer.dir/src/common/main.c.s"
 	C:\msys64\ucrt64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\stani\Desktop\explorer\src\common\main.c -o CMakeFiles\explorer.dir\src\common\main.c.s
 
-CMakeFiles/explorer.dir/src/common/menu.c.obj: CMakeFiles/explorer.dir/flags.make
-CMakeFiles/explorer.dir/src/common/menu.c.obj: CMakeFiles/explorer.dir/includes_C.rsp
-CMakeFiles/explorer.dir/src/common/menu.c.obj: C:/Users/stani/Desktop/explorer/src/common/menu.c
-CMakeFiles/explorer.dir/src/common/menu.c.obj: CMakeFiles/explorer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\stani\Desktop\explorer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/explorer.dir/src/common/menu.c.obj"
-	C:\msys64\ucrt64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/explorer.dir/src/common/menu.c.obj -MF CMakeFiles\explorer.dir\src\common\menu.c.obj.d -o CMakeFiles\explorer.dir\src\common\menu.c.obj -c C:\Users\stani\Desktop\explorer\src\common\menu.c
+CMakeFiles/explorer.dir/src/common/terminal_menu.c.obj: CMakeFiles/explorer.dir/flags.make
+CMakeFiles/explorer.dir/src/common/terminal_menu.c.obj: CMakeFiles/explorer.dir/includes_C.rsp
+CMakeFiles/explorer.dir/src/common/terminal_menu.c.obj: C:/Users/stani/Desktop/explorer/src/common/terminal_menu.c
+CMakeFiles/explorer.dir/src/common/terminal_menu.c.obj: CMakeFiles/explorer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\stani\Desktop\explorer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/explorer.dir/src/common/terminal_menu.c.obj"
+	C:\msys64\ucrt64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/explorer.dir/src/common/terminal_menu.c.obj -MF CMakeFiles\explorer.dir\src\common\terminal_menu.c.obj.d -o CMakeFiles\explorer.dir\src\common\terminal_menu.c.obj -c C:\Users\stani\Desktop\explorer\src\common\terminal_menu.c
 
-CMakeFiles/explorer.dir/src/common/menu.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/explorer.dir/src/common/menu.c.i"
-	C:\msys64\ucrt64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\stani\Desktop\explorer\src\common\menu.c > CMakeFiles\explorer.dir\src\common\menu.c.i
+CMakeFiles/explorer.dir/src/common/terminal_menu.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/explorer.dir/src/common/terminal_menu.c.i"
+	C:\msys64\ucrt64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\stani\Desktop\explorer\src\common\terminal_menu.c > CMakeFiles\explorer.dir\src\common\terminal_menu.c.i
 
-CMakeFiles/explorer.dir/src/common/menu.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/explorer.dir/src/common/menu.c.s"
-	C:\msys64\ucrt64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\stani\Desktop\explorer\src\common\menu.c -o CMakeFiles\explorer.dir\src\common\menu.c.s
+CMakeFiles/explorer.dir/src/common/terminal_menu.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/explorer.dir/src/common/terminal_menu.c.s"
+	C:\msys64\ucrt64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\stani\Desktop\explorer\src\common\terminal_menu.c -o CMakeFiles\explorer.dir\src\common\terminal_menu.c.s
 
 CMakeFiles/explorer.dir/src/windows/files_windows.c.obj: CMakeFiles/explorer.dir/flags.make
 CMakeFiles/explorer.dir/src/windows/files_windows.c.obj: CMakeFiles/explorer.dir/includes_C.rsp
 CMakeFiles/explorer.dir/src/windows/files_windows.c.obj: C:/Users/stani/Desktop/explorer/src/windows/files_windows.c
 CMakeFiles/explorer.dir/src/windows/files_windows.c.obj: CMakeFiles/explorer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\stani\Desktop\explorer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/explorer.dir/src/windows/files_windows.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\stani\Desktop\explorer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/explorer.dir/src/windows/files_windows.c.obj"
 	C:\msys64\ucrt64\bin\cc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/explorer.dir/src/windows/files_windows.c.obj -MF CMakeFiles\explorer.dir\src\windows\files_windows.c.obj.d -o CMakeFiles\explorer.dir\src\windows\files_windows.c.obj -c C:\Users\stani\Desktop\explorer\src\windows\files_windows.c
 
 CMakeFiles/explorer.dir/src/windows/files_windows.c.i: cmake_force
@@ -118,21 +133,23 @@ CMakeFiles/explorer.dir/src/windows/files_windows.c.s: cmake_force
 
 # Object files for target explorer
 explorer_OBJECTS = \
+"CMakeFiles/explorer.dir/src/common/files.c.obj" \
 "CMakeFiles/explorer.dir/src/common/main.c.obj" \
-"CMakeFiles/explorer.dir/src/common/menu.c.obj" \
+"CMakeFiles/explorer.dir/src/common/terminal_menu.c.obj" \
 "CMakeFiles/explorer.dir/src/windows/files_windows.c.obj"
 
 # External object files for target explorer
 explorer_EXTERNAL_OBJECTS =
 
+explorer.exe: CMakeFiles/explorer.dir/src/common/files.c.obj
 explorer.exe: CMakeFiles/explorer.dir/src/common/main.c.obj
-explorer.exe: CMakeFiles/explorer.dir/src/common/menu.c.obj
+explorer.exe: CMakeFiles/explorer.dir/src/common/terminal_menu.c.obj
 explorer.exe: CMakeFiles/explorer.dir/src/windows/files_windows.c.obj
 explorer.exe: CMakeFiles/explorer.dir/build.make
 explorer.exe: CMakeFiles/explorer.dir/linkLibs.rsp
 explorer.exe: CMakeFiles/explorer.dir/objects1.rsp
 explorer.exe: CMakeFiles/explorer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\stani\Desktop\explorer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable explorer.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\stani\Desktop\explorer\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable explorer.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\explorer.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

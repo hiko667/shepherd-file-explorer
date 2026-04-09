@@ -243,6 +243,5 @@ CMakeFiles/explorer.dir/src/windows/files_windows.c.obj: \
  C:/msys64/ucrt64/include/_mingw_off_t.h \
  C:/msys64/ucrt64/include/swprintf.inl \
  C:/msys64/ucrt64/include/sec_api/stdio_s.h \
- C:/Users/stani/Desktop/explorer/include/files_windows.h \
- C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdbool.h \
+ C:/Users/stani/Desktop/explorer/include/files.h \
  C:/Users/stani/Desktop/explorer/include/entry.h

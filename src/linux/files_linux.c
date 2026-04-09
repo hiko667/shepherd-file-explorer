@@ -1,19 +1,16 @@
-// #include <windows.h>
-// #include <stdio.h>
-// #include <string.h>
+#include <stdio.h>
+#include <string.h>
+#include "files.h"
 
-// #include "files_linux.h"
-// #include "entry.h"
+void countFilesInDirectory(char * path, int * count){
 
+}
 
-// void countFilesInDirectoryLinux(char * path, int * count){
-
-// }
-
-// void readFilesToStructLinux(struct entry ** readFiles, char * path){
+void readFilesToStruct(struct entry ** readFiles, char * path){
     
-// }
+}
 
-// struct entry ** getEntryNamesLinux(char * path, int * count){
+struct entry ** getEntryNames(char * path, int * count){
     
-// }
+}
+

@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "files_windows.h"
+#include "files.h"
 
 
 void countFilesInDirectory(char * path, int * count){
@@ -41,13 +41,3 @@ struct entry ** getEntryNames(char * path, int * count){
     return readFiles;
 }
 
-void freeEntries(struct entry ** entries, int count){
-    if (!entries) return;
-    for (int i = 0; i < count; i++) {
-        if (entries[i]) {
-            free(entries[i]->name); 
-            free(entries[i]);
-        }
-    }
-    free(entries);
-}

@@ -11,8 +11,16 @@ CMakeFiles/explorer.dir/src/common/main.c.obj: \
  C:/msys64/ucrt64/include/swprintf.inl \
  C:/msys64/ucrt64/include/sec_api/stdio_s.h \
  C:/Users/stani/Desktop/explorer/include/system.h \
- C:/Users/stani/Desktop/explorer/include/files_windows.h \
- C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdbool.h \
+ C:/Users/stani/Desktop/explorer/include/files.h \
+ C:/msys64/ucrt64/include/stdlib.h \
+ C:/msys64/ucrt64/include/corecrt_wstdlib.h \
+ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/limits.h \
+ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/syslimits.h \
+ C:/msys64/ucrt64/include/limits.h C:/msys64/ucrt64/include/crtdefs.h \
+ C:/msys64/ucrt64/include/sec_api/stdlib_s.h \
+ C:/msys64/ucrt64/include/malloc.h \
+ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/mm_malloc.h \
+ C:/msys64/ucrt64/include/errno.h \
  C:/Users/stani/Desktop/explorer/include/entry.h \
  C:/Users/stani/Desktop/explorer/include/entry.h \
- C:/Users/stani/Desktop/explorer/include/menu.h
+ C:/Users/stani/Desktop/explorer/include/terminal_menu.h

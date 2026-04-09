@@ -2,7 +2,7 @@
 #include <conio.h>
 #include <stdlib.h>
 #include "system.h"
-#include "menu.h"
+#include "terminal_menu.h"
 
 
 void clearTerminal(){

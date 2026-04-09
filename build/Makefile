@@ -128,6 +128,30 @@ explorer/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\explorer.dir\build.make CMakeFiles/explorer.dir/build
 .PHONY : explorer/fast
 
+src/common/files.obj: src/common/files.c.obj
+.PHONY : src/common/files.obj
+
+# target to build an object file
+src/common/files.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\explorer.dir\build.make CMakeFiles/explorer.dir/src/common/files.c.obj
+.PHONY : src/common/files.c.obj
+
+src/common/files.i: src/common/files.c.i
+.PHONY : src/common/files.i
+
+# target to preprocess a source file
+src/common/files.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\explorer.dir\build.make CMakeFiles/explorer.dir/src/common/files.c.i
+.PHONY : src/common/files.c.i
+
+src/common/files.s: src/common/files.c.s
+.PHONY : src/common/files.s
+
+# target to generate assembly for a file
+src/common/files.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\explorer.dir\build.make CMakeFiles/explorer.dir/src/common/files.c.s
+.PHONY : src/common/files.c.s
+
 src/common/main.obj: src/common/main.c.obj
 .PHONY : src/common/main.obj
 
@@ -152,29 +176,29 @@ src/common/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\explorer.dir\build.make CMakeFiles/explorer.dir/src/common/main.c.s
 .PHONY : src/common/main.c.s
 
-src/common/menu.obj: src/common/menu.c.obj
-.PHONY : src/common/menu.obj
+src/common/terminal_menu.obj: src/common/terminal_menu.c.obj
+.PHONY : src/common/terminal_menu.obj
 
 # target to build an object file
-src/common/menu.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\explorer.dir\build.make CMakeFiles/explorer.dir/src/common/menu.c.obj
-.PHONY : src/common/menu.c.obj
+src/common/terminal_menu.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\explorer.dir\build.make CMakeFiles/explorer.dir/src/common/terminal_menu.c.obj
+.PHONY : src/common/terminal_menu.c.obj
 
-src/common/menu.i: src/common/menu.c.i
-.PHONY : src/common/menu.i
+src/common/terminal_menu.i: src/common/terminal_menu.c.i
+.PHONY : src/common/terminal_menu.i
 
 # target to preprocess a source file
-src/common/menu.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\explorer.dir\build.make CMakeFiles/explorer.dir/src/common/menu.c.i
-.PHONY : src/common/menu.c.i
+src/common/terminal_menu.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\explorer.dir\build.make CMakeFiles/explorer.dir/src/common/terminal_menu.c.i
+.PHONY : src/common/terminal_menu.c.i
 
-src/common/menu.s: src/common/menu.c.s
-.PHONY : src/common/menu.s
+src/common/terminal_menu.s: src/common/terminal_menu.c.s
+.PHONY : src/common/terminal_menu.s
 
 # target to generate assembly for a file
-src/common/menu.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\explorer.dir\build.make CMakeFiles/explorer.dir/src/common/menu.c.s
-.PHONY : src/common/menu.c.s
+src/common/terminal_menu.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\explorer.dir\build.make CMakeFiles/explorer.dir/src/common/terminal_menu.c.s
+.PHONY : src/common/terminal_menu.c.s
 
 src/windows/files_windows.obj: src/windows/files_windows.c.obj
 .PHONY : src/windows/files_windows.obj
@@ -209,12 +233,15 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... explorer
+	@echo ... src/common/files.obj
+	@echo ... src/common/files.i
+	@echo ... src/common/files.s
 	@echo ... src/common/main.obj
 	@echo ... src/common/main.i
 	@echo ... src/common/main.s
-	@echo ... src/common/menu.obj
-	@echo ... src/common/menu.i
-	@echo ... src/common/menu.s
+	@echo ... src/common/terminal_menu.obj
+	@echo ... src/common/terminal_menu.i
+	@echo ... src/common/terminal_menu.s
 	@echo ... src/windows/files_windows.obj
 	@echo ... src/windows/files_windows.i
 	@echo ... src/windows/files_windows.s
