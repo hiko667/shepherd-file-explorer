@@ -34,6 +34,7 @@ struct command runTerminalMenu(struct entry ** options, int count){
     char keyCode;
     clearTerminal();
     printOptions(options, position, count);
+    struct command com;
     while(!over){
         if(_kbhit())
         {
@@ -53,20 +54,14 @@ struct command runTerminalMenu(struct entry ** options, int count){
                 printOptions(options, position, count);
                 break;
             case 'q':
-                over = true;
                 clearTerminal();
-                printOptions(options, position, count);
-                break;
+                com.command = 'q';
+                return com; break;
             case 'f':
-                // struct command com;
-                // printf("negro");
-                // com.command = 'f';
-                // com.fileNumber = position;
-                // return com;
-                over = true;
                 clearTerminal();
-                printOptions(options, position, count);
-                break;
+                com.command = 'f';
+                com.file = position;
+                return com; break;
             default:
                 break;
             }
