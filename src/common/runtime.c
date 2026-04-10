@@ -6,35 +6,41 @@
 #include "files.h"
 #include "linked_list.h"
 #include "terminal_menu.h"
+#include "state.h"
 
 void setSystemInfo(char ** separator, char ** path){
     * separator = (SYSTEM_NAME == 'w') ? strdup("\\") : strdup("/");
     * path = (SYSTEM_NAME == 'w') ? strdup("C:\\") : strdup("/");
 }
-void run(){
-    //global state
-    char * separator = NULL;
-    char * path = NULL;
-    int count = 0;
-    setSystemInfo(&separator, &path);
-    struct node * cache = getNewLinkedList();
-    struct entry ** currentDir = (SYSTEM_NAME == 'w') ? getEntryNames(strcat(path, "*"), &count) : getEntryNames(path, &count);
-    bool over = false;
-    //end
+void loadDefaultState(struct state * globalState){
+    (*globalState).over = false;
+    (*globalState).separator = NULL;
+    (*globalState).path = NULL;
+    setSystemInfo(&(globalState->path), &(globalState->separator));
+    (*globalState).count = 0;
+    (*globalState).cache = getNewLinkedList();
+    (*globalState).currentDir = (SYSTEM_NAME == 'w') ? 
+    getEntryNames(strcat((*globalState).path, "*"), &(globalState->count)) : 
+    getEntryNames((*globalState).path, &(globalState->count));
 
-    while (!over){
-        struct command current = runTerminalMenu(currentDir, count);
-        switch (current.command)
-        {
-        case 'q':
-            over = true;
-            break;
-        default:
-            break;
-        }
+}
+void freeGlobalState(struct state * globalState){
+    free(globalState->path);
+    free(globalState->separator);
+    freeEntries(globalState->currentDir, globalState->count);
+    freeLinkedList(&(globalState->cache));
+}
+
+void evaluateCommand(struct command currentCommand, struct state * globalState){
+
+}
+
+void run(){
+    struct state globalState;
+    loadDefaultState(&globalState);
+    while (!globalState.over){
+        struct command current = runTerminalMenu(globalState.currentDir, globalState.count);
+        evaluateCommand(current, &globalState);
     }
-    freeEntries(currentDir, count);
-    freeLinkedList(&cache);
-    free(path);
-    free(separator);
+    freeGlobalState(&globalState);
 }
