@@ -1,3 +1,0 @@
-C:/Users/stani/Desktop/explorer/build/CMakeFiles/explorer.dir
-C:/Users/stani/Desktop/explorer/build/CMakeFiles/edit_cache.dir
-C:/Users/stani/Desktop/explorer/build/CMakeFiles/rebuild_cache.dir

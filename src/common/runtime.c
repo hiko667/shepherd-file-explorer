@@ -23,9 +23,15 @@ void run(){
     //end
 
     while (!over){
-        printf("Iteracja");
         struct command current = runTerminalMenu(currentDir, count);
-        if (current.command = 'q') over = true;
+        switch (current.command)
+        {
+        case 'q':
+            over = true;
+            break;
+        default:
+            break;
+        }
     }
     freeEntries(currentDir, count);
     freeLinkedList(&cache);
