@@ -1,5 +1,5 @@
-CMakeFiles/explorer.dir/src/common/main.c.obj: \
- C:\Users\stani\Desktop\explorer\src\common\main.c \
+CMakeFiles/explorer.dir/src/common/linked_list.c.obj: \
+ C:\Users\stani\Desktop\explorer\src\common\linked_list.c \
  C:/msys64/ucrt64/include/stdio.h \
  C:/msys64/ucrt64/include/corecrt_stdio_config.h \
  C:/msys64/ucrt64/include/corecrt.h C:/msys64/ucrt64/include/_mingw.h \
@@ -10,8 +10,6 @@ CMakeFiles/explorer.dir/src/common/main.c.obj: \
  C:/msys64/ucrt64/include/_mingw_off_t.h \
  C:/msys64/ucrt64/include/swprintf.inl \
  C:/msys64/ucrt64/include/sec_api/stdio_s.h \
- C:/Users/stani/Desktop/explorer/include/system.h \
- C:/Users/stani/Desktop/explorer/include/files.h \
  C:/msys64/ucrt64/include/stdlib.h \
  C:/msys64/ucrt64/include/corecrt_wstdlib.h \
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/limits.h \
@@ -20,8 +18,6 @@ CMakeFiles/explorer.dir/src/common/main.c.obj: \
  C:/msys64/ucrt64/include/sec_api/stdlib_s.h \
  C:/msys64/ucrt64/include/malloc.h \
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/mm_malloc.h \
- C:/msys64/ucrt64/include/errno.h \
- C:/Users/stani/Desktop/explorer/include/entry.h \
- C:/Users/stani/Desktop/explorer/include/entry.h \
- C:/Users/stani/Desktop/explorer/include/terminal_menu.h \
- C:/Users/stani/Desktop/explorer/include/command.h
+ C:/msys64/ucrt64/include/errno.h C:/msys64/ucrt64/include/string.h \
+ C:/msys64/ucrt64/include/sec_api/string_s.h \
+ C:/Users/stani/Desktop/explorer/include/linked_list.h

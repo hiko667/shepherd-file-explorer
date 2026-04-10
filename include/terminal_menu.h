@@ -1,7 +1,8 @@
 #ifndef TERMINAL_MENU_H
 #define TERMINAL_MENU_H
 #include <stdio.h>
+#include "command.h"
 #include "entry.h"
-int runTerminalMenu(struct entry ** options, int count);
+struct command runTerminalMenu(struct entry ** options, int count);
 
 #endif

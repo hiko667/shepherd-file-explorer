@@ -28,7 +28,7 @@ void printOptions(struct entry ** options, int position, int count){
     }
 }
 
-int runTerminalMenu(struct entry ** options, int count){
+struct command runTerminalMenu(struct entry ** options, int count){
     int position = 0;
     bool over = false;
     char keyCode;
@@ -57,14 +57,22 @@ int runTerminalMenu(struct entry ** options, int count){
                 clearTerminal();
                 printOptions(options, position, count);
                 break;
+            case 'f':
+                // struct command com;
+                // printf("negro");
+                // com.command = 'f';
+                // com.fileNumber = position;
+                // return com;
+                over = true;
+                clearTerminal();
+                printOptions(options, position, count);
+                break;
             default:
                 break;
             }
 
         }
         else continue;
-        
-        
     }
 
 }

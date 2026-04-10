@@ -30,21 +30,20 @@ void push(struct node ** head, char * path){
 }
 
 void pop(struct node ** head){
-    if(head == NULL || * head == NULL) return NULL;
-    struct node * temp;
-    temp = (*head);
+    if(head == NULL || * head == NULL) return;
+    struct node * temp = (*head);
     (*head) = (*head)->next;
     free(temp->path);
     free(temp);
 }
 
-void freeLinkedList(struct node * head){
-    struct node *temp = head;
-    temp = head;
+void freeLinkedList(struct node ** head){
+    struct node *temp = (*head);
     while (temp != NULL){
-        struct Node *next = temp->next;
+        struct node *next = temp->next;
         free(temp->path);
         free(temp);
         temp = next;
     }
+    *head = NULL;
 }

@@ -152,6 +152,30 @@ src/common/files.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\explorer.dir\build.make CMakeFiles/explorer.dir/src/common/files.c.s
 .PHONY : src/common/files.c.s
 
+src/common/linked_list.obj: src/common/linked_list.c.obj
+.PHONY : src/common/linked_list.obj
+
+# target to build an object file
+src/common/linked_list.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\explorer.dir\build.make CMakeFiles/explorer.dir/src/common/linked_list.c.obj
+.PHONY : src/common/linked_list.c.obj
+
+src/common/linked_list.i: src/common/linked_list.c.i
+.PHONY : src/common/linked_list.i
+
+# target to preprocess a source file
+src/common/linked_list.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\explorer.dir\build.make CMakeFiles/explorer.dir/src/common/linked_list.c.i
+.PHONY : src/common/linked_list.c.i
+
+src/common/linked_list.s: src/common/linked_list.c.s
+.PHONY : src/common/linked_list.s
+
+# target to generate assembly for a file
+src/common/linked_list.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\explorer.dir\build.make CMakeFiles/explorer.dir/src/common/linked_list.c.s
+.PHONY : src/common/linked_list.c.s
+
 src/common/main.obj: src/common/main.c.obj
 .PHONY : src/common/main.obj
 
@@ -175,6 +199,30 @@ src/common/main.s: src/common/main.c.s
 src/common/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\explorer.dir\build.make CMakeFiles/explorer.dir/src/common/main.c.s
 .PHONY : src/common/main.c.s
+
+src/common/runtime.obj: src/common/runtime.c.obj
+.PHONY : src/common/runtime.obj
+
+# target to build an object file
+src/common/runtime.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\explorer.dir\build.make CMakeFiles/explorer.dir/src/common/runtime.c.obj
+.PHONY : src/common/runtime.c.obj
+
+src/common/runtime.i: src/common/runtime.c.i
+.PHONY : src/common/runtime.i
+
+# target to preprocess a source file
+src/common/runtime.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\explorer.dir\build.make CMakeFiles/explorer.dir/src/common/runtime.c.i
+.PHONY : src/common/runtime.c.i
+
+src/common/runtime.s: src/common/runtime.c.s
+.PHONY : src/common/runtime.s
+
+# target to generate assembly for a file
+src/common/runtime.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\explorer.dir\build.make CMakeFiles/explorer.dir/src/common/runtime.c.s
+.PHONY : src/common/runtime.c.s
 
 src/common/terminal_menu.obj: src/common/terminal_menu.c.obj
 .PHONY : src/common/terminal_menu.obj
@@ -236,9 +284,15 @@ help:
 	@echo ... src/common/files.obj
 	@echo ... src/common/files.i
 	@echo ... src/common/files.s
+	@echo ... src/common/linked_list.obj
+	@echo ... src/common/linked_list.i
+	@echo ... src/common/linked_list.s
 	@echo ... src/common/main.obj
 	@echo ... src/common/main.i
 	@echo ... src/common/main.s
+	@echo ... src/common/runtime.obj
+	@echo ... src/common/runtime.i
+	@echo ... src/common/runtime.s
 	@echo ... src/common/terminal_menu.obj
 	@echo ... src/common/terminal_menu.i
 	@echo ... src/common/terminal_menu.s
