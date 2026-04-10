@@ -7,8 +7,8 @@ struct node{
 };
 
 struct node * getNewLinkedList();
-void push(struct node * head, char * value);
+void push(struct node * head, char * path);
 void pull(struct node * head);
-void freeTree(struct node * head);
+void freeLinkedList(struct node * head);
 
 #endif

@@ -5,10 +5,10 @@
 #include "linked_list.h"
 
 
-//i stole most of this code from https://www.geeksforgeeks.org/c/linked-list-in-c/ check them out
+//I (((stole))) was inspired by this code from https://www.geeksforgeeks.org/c/linked-list-in-c/ 
 struct node * getNewLinkedList(){
     struct node * newList = malloc(sizeof(struct node));
-
+    return newList;
 }
 
 struct node * newNode(const char * path){
@@ -18,15 +18,27 @@ struct node * newNode(const char * path){
     return new;
 }
 
-void push(struct node * head, char * value){
-
+void push(struct node ** head, char * path){
+    if((*head)->path == NULL){
+        (*head)->path = strdup(path);
+    }
+    else{
+        struct node * temp = malloc(sizeof(struct node));
+        temp->next = (*head);
+        (*head) = temp;
+    }
 }
 
-void pull(struct node * head){
-
+void pop(struct node ** head){
+    if(head == NULL || * head == NULL) return NULL;
+    struct node * temp;
+    temp = (*head);
+    (*head) = (*head)->next;
+    free(temp->path);
+    free(temp);
 }
 
-void freeTree(struct node * head){
+void freeLinkedList(struct node * head){
     struct node *temp = head;
     temp = head;
     while (temp != NULL){
