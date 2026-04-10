@@ -3,6 +3,6 @@
 #include <stdio.h>
 #include "command.h"
 #include "entry.h"
-struct command runTerminalMenu(struct entry ** options, int count);
+char runTerminalMenu(struct entry ** options, int count, int * position);
 
 #endif

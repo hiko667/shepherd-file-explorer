@@ -28,12 +28,11 @@ void printOptions(struct entry ** options, int position, int count){
     }
 }
 
-struct command runTerminalMenu(struct entry ** options, int count){
-    int position = 0;
+char runTerminalMenu(struct entry ** options, int count, int * position){
     bool over = false;
     char keyCode;
     clearTerminal();
-    printOptions(options, position, count);
+    printOptions(options, (*position), count);
     struct command com;
     while(!over){
         if(_kbhit())
@@ -42,28 +41,20 @@ struct command runTerminalMenu(struct entry ** options, int count){
             switch (keyCode)
             {
             case 'w':
-                if(position == 0) position = count-1;
-                else position -= 1;
+                if((*position) == 0) (*position) = count-1;
+                else (*position) -= 1;
                 clearTerminal();
-                printOptions(options, position, count);
+                printOptions(options, (*position), count);
                 break;
             case 's':
-                if(position == count-1) position = 0;
-                else position += 1;
+                if((*position) == count-1) (*position) = 0;
+                else (*position) += 1;
                 clearTerminal();
-                printOptions(options, position, count);
+                printOptions(options, (*position), count);
                 break;
-            case 'q':
-                clearTerminal();
-                com.command = 'q';
-                return com; break;
-            case 'f':
-                clearTerminal();
-                com.command = 'f';
-                com.file = position;
-                return com; break;
             default:
-                break;
+                clearTerminal();
+                return keyCode; break;
             }
 
         }

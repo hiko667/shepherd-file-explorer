@@ -18,6 +18,7 @@ void loadDefaultState(struct state * globalState){
     (*globalState).path = NULL;
     setSystemInfo(&(globalState->path), &(globalState->separator));
     (*globalState).count = 0;
+    (*globalState).position = 0;
     (*globalState).cache = getNewLinkedList();
     (*globalState).currentDir = (SYSTEM_NAME == 'w') ? 
     getEntryNames(strcat((*globalState).path, "*"), &(globalState->count)) : 
@@ -31,16 +32,22 @@ void freeGlobalState(struct state * globalState){
     freeLinkedList(&(globalState->cache));
 }
 
-void evaluateCommand(struct command currentCommand, struct state * globalState){
-
+void evaluateCommand(char command, struct state * globalState){
+    switch (command)
+    {
+    case 'q': (* globalState).over = true; break;
+    
+    default:
+        break;
+    }
 }
 
 void run(){
     struct state globalState;
     loadDefaultState(&globalState);
     while (!globalState.over){
-        struct command current = runTerminalMenu(globalState.currentDir, globalState.count);
-        evaluateCommand(current, &globalState);
+        char command = runTerminalMenu(globalState.currentDir, globalState.count, &(globalState.position));
+        evaluateCommand(command, &globalState);
     }
     freeGlobalState(&globalState);
 }

@@ -7,6 +7,7 @@
 struct state
 {
     bool over;
+    int position;
     char * separator;
     char * path;
     int count;
