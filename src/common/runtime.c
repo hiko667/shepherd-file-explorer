@@ -35,8 +35,11 @@ void freeGlobalState(struct state * globalState){
 void evaluateCommand(char command, struct state * globalState){
     switch (command)
     {
-    case 'q': (* globalState).over = true; break;
-    
+    case 'q': (* globalState).over = true; break; // qui app
+    case 'c': //clear cache
+        freeLinkedList(globalState->cache);
+        (*globalState).cache = getNewLinkedList();
+        break;
     default:
         break;
     }

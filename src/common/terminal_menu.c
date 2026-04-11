@@ -33,7 +33,6 @@ char runTerminalMenu(struct entry ** options, int count, int * position){
     char keyCode;
     clearTerminal();
     printOptions(options, (*position), count);
-    struct command com;
     while(!over){
         if(_kbhit())
         {
