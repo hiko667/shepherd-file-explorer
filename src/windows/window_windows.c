@@ -8,7 +8,7 @@ void openWindow(const char * path){
     if(path == NULL) return;
     size_t stringSize = strlen(path) + 32;
     char * command = (char*)malloc(stringSize);
-    snprintf(command, (stringSize), "explorer.exe /select,\"%s\"", path);
+    snprintf(command, stringSize, "start \"\" \"%s\"", path);
     system(command);
     free(command);
 }

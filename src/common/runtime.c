@@ -52,17 +52,22 @@ void evaluateCommand(char command, struct state * globalState){
         break;
     case 'f': //open window
         int position = (*globalState).position;
-        char * fileName = globalState->currentDir[position]->name;
-        size_t sizeOfFullPath = strlen(globalState->path) + strlen(fileName) + 2;
-        char * path = (char *)malloc(sizeOfFullPath);
-        if(path){
-            snprintf(path, sizeOfFullPath, "%s%s", globalState->path, fileName);
-            printf("%s\n", fileName);
-            printf("%s\n", globalState->separator);
-            printf("%s\n", path);
-            (* globalState).over = true;
+        if (globalState->currentDir[position]->type == FILE_ENTRY || 
+            globalState->currentDir[position]->type == HIDEN_FILE_ENTRY){
+            char * fileName = globalState->currentDir[position]->name;
+            size_t sizeOfFullPath = strlen(globalState->path) + strlen(fileName) + 2;
+            char * path = (char *)malloc(sizeOfFullPath);
+            if(path){
+                snprintf(path, sizeOfFullPath, "%s%s", globalState->path, fileName);
+                printf("%s\n", fileName);
+                printf("%s\n", globalState->separator);
+                printf("%s\n", path);
+            }
+            openWindow(path);
         }
-        openWindow(path);
+        else{
+            
+        }
         break;
     default:
         break;
