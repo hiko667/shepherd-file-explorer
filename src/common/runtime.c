@@ -13,6 +13,24 @@ void setSystemInfo(char ** separator, char ** path){
     * separator = (SYSTEM_NAME == 'w') ? strdup("\\") : strdup("/");
     * path = (SYSTEM_NAME == 'w') ? strdup("C:\\") : strdup("/");
 }
+
+void setCurrentDir(struct state * globalState){
+    printf("ala");
+    if (!globalState->currentDir) freeEntries(globalState->currentDir, globalState->count);
+    printf("Zuzia2");
+    if(SYSTEM_NAME == 'w'){
+        size_t sizeOfFullPath = strlen((*globalState).path) + 2;
+        char * path = malloc(sizeOfFullPath);
+        snprintf(path, sizeOfFullPath, "%s*",(*globalState).path);        
+        (*globalState).currentDir = getEntryNames(path, &(globalState->count));
+        free(path);
+    }
+    else{
+        (*globalState).currentDir = getEntryNames((*globalState).path, &(globalState->count));
+    }
+    printf("Zuzia1");
+}
+
 void loadDefaultState(struct state * globalState){
     (*globalState).over = false;
     (*globalState).separator = NULL;
@@ -21,19 +39,7 @@ void loadDefaultState(struct state * globalState){
     (*globalState).count = 0;
     (*globalState).position = 0;
     (*globalState).cache = getNewLinkedList();
-    if(SYSTEM_NAME == 'w'){
-        size_t sizeOfFullPath = strlen((*globalState).path) + 2;
-        char * path = malloc(sizeOfFullPath);
-        snprintf(path, sizeOfFullPath, "%s*",(*globalState).path);
-        printf("%s", path);
-        (*globalState).currentDir = getEntryNames(path, &(globalState->count));
-        free(path);
-    }
-    else{
-        (*globalState).currentDir = getEntryNames((*globalState).path, &(globalState->count));
-    }
-    
-
+    setCurrentDir(globalState);
 }
 void freeGlobalState(struct state * globalState){
     free(globalState->path);
@@ -42,30 +48,44 @@ void freeGlobalState(struct state * globalState){
     freeLinkedList(&(globalState->cache));
 }
 
+void openFile(struct state * globalState, int position){
+    char * fileName = globalState->currentDir[position]->name;
+    size_t sizeOfFullPath = strlen(globalState->path) + strlen(fileName) + 2;
+    char * path = (char *)malloc(sizeOfFullPath);
+    if(path){
+        snprintf(path, sizeOfFullPath, "%s%s", globalState->path, fileName);
+    }
+    openWindow(path);
+    free(path);
+}
+
+void openDir(struct state * globalState, int position){
+    char * dirName = globalState->currentDir[position]->name;
+    size_t sizeOfFullPath = strlen(globalState->path) + strlen(dirName) + 2;
+    char * path = (char *)malloc(sizeOfFullPath);
+    snprintf(path, sizeOfFullPath, "%s%s%s", globalState->path, dirName, globalState->separator);
+    free(globalState->path);
+    globalState->path = strdup(path);
+    setCurrentDir(globalState);
+    free(path);
+}
+
 void evaluateCommand(char command, struct state * globalState){
     switch (command)
     {
-    case 'q': (* globalState).over = true; break; // qui app
+    case 'q': (* globalState).over = true; break; // quit app
     case 'c': //clear cache
         freeLinkedList(&(globalState->cache));
         (*globalState).cache = getNewLinkedList();
         break;
-    case 'f': //open window
+    case 'f': //open file or switch directory
         int position = (*globalState).position;
         if (globalState->currentDir[position]->type == FILE_ENTRY || 
             globalState->currentDir[position]->type == HIDEN_FILE_ENTRY){
-            char * fileName = globalState->currentDir[position]->name;
-            size_t sizeOfFullPath = strlen(globalState->path) + strlen(fileName) + 2;
-            char * path = (char *)malloc(sizeOfFullPath);
-            if(path){
-                snprintf(path, sizeOfFullPath, "%s%s", globalState->path, fileName);
-                printf("%s\n", fileName);
-                printf("%s\n", globalState->separator);
-                printf("%s\n", path);
-            }
-            openWindow(path);
+            openFile(globalState, position);
         }
         else{
+            openDir(globalState, position);
             
         }
         break;
@@ -81,6 +101,5 @@ void run(){
         char command = runTerminalMenu(globalState.currentDir, globalState.count, &(globalState.position));
         evaluateCommand(command, &globalState);
     }
-    printf("Zuzia1");
     freeGlobalState(&globalState);
 }

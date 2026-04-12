@@ -10,20 +10,20 @@ void clearTerminal(){
     else if(SYSTEM_NAME == 'l') system("clear");
 }
 
-void printType(enum entryTypes type){
+void printType(enum entryTypes type, int count){
     switch (type){
     case FILE_ENTRY: printf("[FILE]"); break;
     case HIDEN_FILE_ENTRY: printf("[HIDEN FILE]"); break;
     case DIR_ENTRY: printf("[DIR]"); break;
     case HIDEN_DIR_ENTRY: printf("[HIDEN DIR]"); break;
-    default: printf("[ERROR]"); break;
+    default: printf("[ERROR] %d", count); break;
     }
 }
 
 void printOptions(struct entry ** options, int position, int count){
     for(int i = 0;i<count; i++){
         if (position == i) printf("->>");
-        printType(options[i]->type);
+        printType(options[i]->type, count);
         printf(" %s\n", options[i]->name);
     }
 }
