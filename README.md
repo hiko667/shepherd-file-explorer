@@ -49,4 +49,6 @@ You control the aplication using your keyboard. No mouse needed.
 | `s` | Go down |
 | `f` | Open directory, or file in the other window (on widnows) |
 | `q` | Quit |
+| `c` | Clear cache |
+| `d` | Go back to the parent dir |
 

@@ -86,6 +86,13 @@ void evaluateCommand(char command, struct state * globalState){
             globalState->position = 0;
         }
         break;
+    case 'd':
+        if(strcmp(globalState->path, "C:\\") != 0)
+        {
+            goBack(globalState);
+            setCurrentDir(globalState);
+        }
+        break;
     default:
         break;
     }
