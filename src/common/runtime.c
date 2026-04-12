@@ -15,9 +15,7 @@ void setSystemInfo(char ** separator, char ** path){
 }
 
 void setCurrentDir(struct state * globalState){
-    printf("ala");
     if (!globalState->currentDir) freeEntries(globalState->currentDir, globalState->count);
-    printf("Zuzia2");
     if(SYSTEM_NAME == 'w'){
         size_t sizeOfFullPath = strlen((*globalState).path) + 2;
         char * path = malloc(sizeOfFullPath);
@@ -28,7 +26,6 @@ void setCurrentDir(struct state * globalState){
     else{
         (*globalState).currentDir = getEntryNames((*globalState).path, &(globalState->count));
     }
-    printf("Zuzia1");
 }
 
 void loadDefaultState(struct state * globalState){
@@ -86,7 +83,7 @@ void evaluateCommand(char command, struct state * globalState){
         }
         else{
             openDir(globalState, position);
-            
+            globalState->position = 0;
         }
         break;
     default:
@@ -95,6 +92,7 @@ void evaluateCommand(char command, struct state * globalState){
 }
 
 void run(){
+    
     struct state globalState;
     loadDefaultState(&globalState);
     while (!globalState.over){

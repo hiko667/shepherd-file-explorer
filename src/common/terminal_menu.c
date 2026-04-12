@@ -21,7 +21,9 @@ void printType(enum entryTypes type, int count){
 }
 
 void printOptions(struct entry ** options, int position, int count){
+    
     for(int i = 0;i<count; i++){
+
         if (position == i) printf("->>");
         printType(options[i]->type, count);
         printf(" %s\n", options[i]->name);
