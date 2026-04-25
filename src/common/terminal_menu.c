@@ -4,7 +4,6 @@
 #include "system.h"
 #include "terminal_menu.h"
 
-
 void clearTerminal(){
     if(SYSTEM_NAME == 'w') system("cls");
     else if(SYSTEM_NAME == 'l') system("clear");
@@ -30,7 +29,16 @@ void printOptions(struct entry ** options, int position, int count){
     }
 }
 
-char runTerminalMenu(struct entry ** options, int count, int * position){
+command_t decodeCommandFromKey(char key){
+    switch (key){
+    case 'f': return SHEPHERD_PICK; break;
+    case 'd': return SHEPHERD_GO_BACK; break;
+    case 'c': return SHEPHERD_CLEAR_CACHE; break;
+    case 'q': return SHEPHERD_QUIT; break;
+    default: return SHEPHERD_UNKNOWN; break;
+    }
+}
+command_t runTerminalMenu(struct entry ** options, int count, int * position){
     bool over = false;
     char keyCode;
     clearTerminal();
@@ -55,7 +63,7 @@ char runTerminalMenu(struct entry ** options, int count, int * position){
                 break;
             default:
                 clearTerminal();
-                return keyCode; break;
+                return decodeCommandFromKey(keyCode); break;
             }
 
         }

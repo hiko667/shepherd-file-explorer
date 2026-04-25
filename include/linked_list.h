@@ -8,7 +8,7 @@ struct node{
 
 struct node * getNewLinkedList();
 void push(struct node ** head, char * path);
-void pull(struct node ** head);
+void pop(struct node ** head);
 void freeLinkedList(struct node ** head);
 
 #endif

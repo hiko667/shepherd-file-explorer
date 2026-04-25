@@ -24,6 +24,7 @@ void push(struct node ** head, char * path){
     }
     else{
         struct node * temp = malloc(sizeof(struct node));
+        temp->path = strdup(path);
         temp->next = (*head);
         (*head) = temp;
     }

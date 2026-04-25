@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "files.h"
-
+#include "linked_list.h"
 
 void freeEntries(struct entry ** entries, int count){
     if (!entries) return;
@@ -15,11 +15,9 @@ void freeEntries(struct entry ** entries, int count){
 }
 
 void goBack(struct state * globalState){
-    size_t i = strlen(globalState->path);
-    while (globalState->path[i] != '\\') i--;
-    char * temp = malloc(sizeof(char) * i);
-    strncpy(temp, globalState->path, i);
+    pop(&(globalState->dirCache));
+    printf(globalState->dirCache->path);
     free(globalState->path);
-    globalState->path = strdup(temp);
-    free(temp);
+
+    (*globalState).path = strdup(globalState->dirCache->path);
 }

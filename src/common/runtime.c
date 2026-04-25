@@ -8,6 +8,8 @@
 #include "linked_list.h"
 #include "terminal_menu.h"
 #include "state.h"
+#include "command.h"
+
 
 void setSystemInfo(char ** separator, char ** path){
     * separator = (SYSTEM_NAME == 'w') ? strdup("\\") : strdup("/");
@@ -19,7 +21,7 @@ void setCurrentDir(struct state * globalState){
     if(SYSTEM_NAME == 'w'){
         size_t sizeOfFullPath = strlen((*globalState).path) + 3;
         char * path = malloc(sizeOfFullPath);
-        snprintf(path, sizeOfFullPath, "%s\\*",(*globalState).path);     
+        snprintf(path, sizeOfFullPath, "%s*",(*globalState).path);     
         printf("%s", path);
         (*globalState).currentDir = getEntryNames(path, &(globalState->count));
         printf("Zuzia3");
@@ -38,6 +40,8 @@ void loadDefaultState(struct state * globalState){
     (*globalState).count = 0;
     (*globalState).position = 0;
     (*globalState).cache = getNewLinkedList();
+    (*globalState).dirCache = getNewLinkedList();
+    push(&(globalState->dirCache), (*globalState).path);
     globalState->currentDir = NULL;
     setCurrentDir(globalState);
 }
@@ -46,6 +50,7 @@ void freeGlobalState(struct state * globalState){
     free(globalState->separator);
     freeEntries(globalState->currentDir, globalState->count);
     freeLinkedList(&(globalState->cache));
+    freeLinkedList(&(globalState->dirCache));
 }
 
 void openFile(struct state * globalState, int position){
@@ -66,19 +71,20 @@ void openDir(struct state * globalState, int position){
     snprintf(path, sizeOfFullPath, "%s%s%s", globalState->path, dirName, globalState->separator);
     free(globalState->path);
     globalState->path = strdup(path);
+    push(&(globalState->dirCache), globalState->path);
     setCurrentDir(globalState);
     free(path);
 }
 
-void evaluateCommand(char command, struct state * globalState){
-    switch (command)
+void evaluateCommand(command_t com, struct state * globalState){
+    switch (com)
     {
-    case 'q': (* globalState).over = true; break; // quit app
-    case 'c': //clear cache
+    case SHEPHERD_QUIT: (* globalState).over = true; break; // quit app
+    case SHEPHERD_CLEAR_CACHE: //clear cache
         freeLinkedList(&(globalState->cache));
         (*globalState).cache = getNewLinkedList();
         break;
-    case 'f': //open file or switch directory
+    case SHEPHERD_PICK: //open file or switch directory
         int position = (*globalState).position;
         if (globalState->currentDir[position]->type == FILE_ENTRY || 
             globalState->currentDir[position]->type == HIDEN_FILE_ENTRY){
@@ -89,12 +95,10 @@ void evaluateCommand(char command, struct state * globalState){
             globalState->position = 0;
         }
         break;
-    case 'd':
-        printf("%s", globalState->path);
+    case SHEPHERD_GO_BACK:
         if(strcmp(globalState->path, "C:\\") != 0)
         {
             goBack(globalState);
-            printf("Zuzia1");
             setCurrentDir(globalState);
         }
         break;
@@ -104,12 +108,11 @@ void evaluateCommand(char command, struct state * globalState){
 }
 
 void run(){
-    
     struct state globalState;
     loadDefaultState(&globalState);
     while (!globalState.over){
-        char command = runTerminalMenu(globalState.currentDir, globalState.count, &(globalState.position));
-        evaluateCommand(command, &globalState);
+        command_t com = runTerminalMenu(globalState.currentDir, globalState.count, &(globalState.position));
+        evaluateCommand(com, &globalState);
     }
     freeGlobalState(&globalState);
 }

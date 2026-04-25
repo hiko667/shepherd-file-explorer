@@ -12,6 +12,7 @@ struct state
     char * path;
     int count;
     struct node * cache;
+    struct node * dirCache;
     struct entry ** currentDir;
 };
 
