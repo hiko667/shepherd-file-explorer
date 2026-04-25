@@ -1,8 +1,8 @@
-#include "gui.h"
+#include "runtime.h"
 
 int main(int argc, char * argv[])
 {
-    runGui(argc, argv);
+    run();
     return 0;
 }
 

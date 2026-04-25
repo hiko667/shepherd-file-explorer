@@ -15,12 +15,14 @@ void setSystemInfo(char ** separator, char ** path){
 }
 
 void setCurrentDir(struct state * globalState){
-    if (!globalState->currentDir) freeEntries(globalState->currentDir, globalState->count);
+    if (globalState->currentDir != NULL) freeEntries(globalState->currentDir, globalState->count);
     if(SYSTEM_NAME == 'w'){
-        size_t sizeOfFullPath = strlen((*globalState).path) + 2;
+        size_t sizeOfFullPath = strlen((*globalState).path) + 3;
         char * path = malloc(sizeOfFullPath);
-        snprintf(path, sizeOfFullPath, "%s*",(*globalState).path);        
+        snprintf(path, sizeOfFullPath, "%s\\*",(*globalState).path);     
+        printf("%s", path);
         (*globalState).currentDir = getEntryNames(path, &(globalState->count));
+        printf("Zuzia3");
         free(path);
     }
     else{
@@ -36,6 +38,7 @@ void loadDefaultState(struct state * globalState){
     (*globalState).count = 0;
     (*globalState).position = 0;
     (*globalState).cache = getNewLinkedList();
+    globalState->currentDir = NULL;
     setCurrentDir(globalState);
 }
 void freeGlobalState(struct state * globalState){
@@ -87,9 +90,11 @@ void evaluateCommand(char command, struct state * globalState){
         }
         break;
     case 'd':
+        printf("%s", globalState->path);
         if(strcmp(globalState->path, "C:\\") != 0)
         {
             goBack(globalState);
+            printf("Zuzia1");
             setCurrentDir(globalState);
         }
         break;

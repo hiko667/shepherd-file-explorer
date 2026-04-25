@@ -2,6 +2,7 @@
 #include <string.h>
 #include "files.h"
 
+
 void freeEntries(struct entry ** entries, int count){
     if (!entries) return;
     for (int i = 0; i < count; i++) {
@@ -17,7 +18,7 @@ void goBack(struct state * globalState){
     size_t i = strlen(globalState->path);
     while (globalState->path[i] != '\\') i--;
     char * temp = malloc(sizeof(char) * i);
-    strncpy(globalState->path, temp, i);
+    strncpy(temp, globalState->path, i);
     free(globalState->path);
     globalState->path = strdup(temp);
     free(temp);
