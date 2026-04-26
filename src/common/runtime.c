@@ -100,6 +100,8 @@ void evaluateCommand(command_t com, struct state * globalState){
         {
             goBack(globalState);
             setCurrentDir(globalState);
+            globalState->position = 0;
+
         }
         break;
     default:
