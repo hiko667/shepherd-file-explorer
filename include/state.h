@@ -4,6 +4,8 @@
 #include <stdbool.h>
 #include "linked_list.h"
 #include "entry.h"
+#include "command.h"
+
 struct state
 {
     bool over;
@@ -14,6 +16,7 @@ struct state
     struct node * cache;
     struct node * dirCache;
     struct entry ** currentDir;
+    command_t mode;
 };
 
 #endif

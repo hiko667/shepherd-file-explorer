@@ -43,6 +43,7 @@ void loadDefaultState(struct state * globalState){
     (*globalState).dirCache = getNewLinkedList();
     push(&(globalState->dirCache), (*globalState).path);
     globalState->currentDir = NULL;
+    (*globalState).mode = SHEPHERD_UNKNOWN;
     setCurrentDir(globalState);
 }
 void freeGlobalState(struct state * globalState){
@@ -101,8 +102,22 @@ void evaluateCommand(command_t com, struct state * globalState){
             goBack(globalState);
             setCurrentDir(globalState);
             globalState->position = 0;
-
         }
+        break;
+    case SHEPHERD_MOVE:
+        if((*globalState).mode != SHEPHERD_UNKNOWN){
+            freeLinkedList(&(globalState->cache));
+            (*globalState).cache = getNewLinkedList();
+        }
+        size_t pathLength = sizeof(char) * (strlen(globalState->path) + strlen(globalState->currentDir[position]->name));
+        char * path = malloc(pathLength);
+        path = strdup(globalState->path);
+        strcat(path, globalState->currentDir[position]->name);
+        push(&(globalState->dirCache), path);
+        free(path);
+        break;
+    case SHEPHERD_COPY:
+
         break;
     default:
         break;
