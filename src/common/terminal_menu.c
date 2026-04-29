@@ -1,5 +1,8 @@
 #include "terminal_menu.h"
 #include "system.h"
+#include <stdio.h>
+#include <system.h>
+#include <stdlib.h>
 
 void clearTerminal(){
     if(SYSTEM_NAME == 'w') system("cls");

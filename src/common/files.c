@@ -16,8 +16,6 @@ void freeEntries(struct entry ** entries, int count){
 
 void goBack(struct state * globalState){
     pop(&(globalState->dirCache));
-    printf(globalState->dirCache->path);
     free(globalState->path);
-
     (*globalState).path = strdup(globalState->dirCache->path);
 }
