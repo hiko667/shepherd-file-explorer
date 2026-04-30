@@ -18,7 +18,9 @@ void setSystemInfo(char ** separator, char ** path){
     * separator = (SYSTEM_NAME == 'w') ? strdup("\\") : strdup("/");
     if(SYSTEM_NAME == 'l'){
         struct passwd *pw = getpwuid(geteuid());
-        * path = strdup(pw->pw_dir); return;
+        char * temp = malloc((strlen(pw->pw_dir) + 2) * sizeof(char));
+        sprintf(temp, "%s/", pw->pw_dir);
+        *path = strdup(temp); free(temp); return;
     }
     * path = strdup("C:\\");
 }
@@ -105,12 +107,15 @@ void evaluateCommand(command_t com, struct state * globalState){
         break;
     case SHEPHERD_GO_BACK:
         struct passwd *pw = getpwuid(geteuid());
-        if(strcmp(globalState->path, "C:\\") != 0 && strcmp(globalState->path, pw->pw_dir) != 0)
+        char * temp = malloc((strlen(pw->pw_dir) + 2) * sizeof(char));
+        sprintf(temp, "%s/", pw->pw_dir);
+        if(strcmp(globalState->path, "C:\\") != 0 && strcmp(globalState->path, temp) != 0)
         {
             goBack(globalState);
             setCurrentDir(globalState);
             globalState->position = 0;
         }
+        free(temp);
         break;
     case SHEPHERD_MOVE:
         if((*globalState).mode != SHEPHERD_UNKNOWN){

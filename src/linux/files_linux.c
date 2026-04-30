@@ -11,8 +11,6 @@ void countFilesInDirectory(char * path, int * count){
     struct dirent * entry;
     DIR * dir = opendir(path);
 
-    if (dir == NULL) return; // Zawsze sprawdzaj, czy otwarto katalog
-
     while((entry = readdir(dir)) != NULL)
     {
         if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0) {
