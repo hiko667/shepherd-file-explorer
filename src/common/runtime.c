@@ -1,9 +1,12 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <pwd.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include "system.h"
 #include "open_window.h"
 #include "runtime.h"
-#include "system.h"
 #include "files.h"
 #include "linked_list.h"
 #include "terminal_menu.h"
@@ -13,7 +16,11 @@
 
 void setSystemInfo(char ** separator, char ** path){
     * separator = (SYSTEM_NAME == 'w') ? strdup("\\") : strdup("/");
-    * path = (SYSTEM_NAME == 'w') ? strdup("C:\\") : strdup("/");
+    if(SYSTEM_NAME == 'l'){
+        struct passwd *pw = getpwuid(geteuid());
+        * path = strdup(pw->pw_dir); return;
+    }
+    * path = strdup("C:\\");
 }
 
 void setCurrentDir(struct state * globalState){
@@ -24,7 +31,6 @@ void setCurrentDir(struct state * globalState){
         snprintf(path, sizeOfFullPath, "%s*",(*globalState).path);     
         printf("%s", path);
         (*globalState).currentDir = getEntryNames(path, &(globalState->count));
-        printf("Zuzia3");
         free(path);
     }
     else{
@@ -80,7 +86,8 @@ void openDir(struct state * globalState, int position){
 void evaluateCommand(command_t com, struct state * globalState){
     switch (com)
     {
-    case SHEPHERD_QUIT: (* globalState).over = true; break; // quit app
+    case SHEPHERD_QUIT: 
+        (* globalState).over = true; break; // quit app
     case SHEPHERD_CLEAR_CACHE: //clear cache
         freeLinkedList(&(globalState->cache));
         (*globalState).cache = getNewLinkedList();
@@ -97,7 +104,8 @@ void evaluateCommand(command_t com, struct state * globalState){
         }
         break;
     case SHEPHERD_GO_BACK:
-        if(strcmp(globalState->path, "C:\\") != 0)
+        struct passwd *pw = getpwuid(geteuid());
+        if(strcmp(globalState->path, "C:\\") != 0 && strcmp(globalState->path, pw->pw_dir) != 0)
         {
             goBack(globalState);
             setCurrentDir(globalState);
@@ -127,9 +135,11 @@ void evaluateCommand(command_t com, struct state * globalState){
 void run(){
     struct state globalState;
     loadDefaultState(&globalState);
+    
     while (!globalState.over){
         command_t com = runTerminalMenu(globalState.currentDir, globalState.count, &(globalState.position));
         evaluateCommand(com, &globalState);
     }
     freeGlobalState(&globalState);
+
 }

@@ -9,8 +9,16 @@ if(WIN32)
 else()
     file(GLOB OS_SOURCES "src/linux/*.c")
 endif()
+##### DEBUG
+set(CMAKE_BUILD_TYPE Debug) 
 
+####
 add_executable(${PROJECT_NAME} ${COMMON_SOURCES} ${OS_SOURCES})
+
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    target_compile_options(${PROJECT_NAME} PRIVATE -fsanitize=address -fno-omit-frame-pointer)
+    target_link_options(${PROJECT_NAME} PRIVATE -fsanitize=address)
+endif()
 
 if(WIN32)
     target_include_directories(${PROJECT_NAME} PRIVATE 

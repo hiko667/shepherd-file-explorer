@@ -19,3 +19,11 @@ void goBack(struct state * globalState){
     free(globalState->path);
     (*globalState).path = strdup(globalState->dirCache->path);
 }
+
+struct entry ** getEntryNames(char * path, int * count){
+    countFilesInDirectory(path, count);
+    struct entry ** readFiles = malloc(sizeof(struct entry *) * (*count));
+    for(int i = 0; i < (*count); i++) readFiles[i] = malloc(sizeof(struct entry));
+    readFilesToStruct(readFiles, path, (* count));
+    return readFiles;
+}

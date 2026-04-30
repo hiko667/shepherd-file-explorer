@@ -19,7 +19,7 @@ void countFilesInDirectory(char * path, int * count){
     FindClose(hFind);
 }
 
-void readFilesToStruct(struct entry ** readFiles, char * path){
+void readFilesToStruct(struct entry ** readFiles, char * path, int count){
     WIN32_FIND_DATA findData;
     HANDLE hFind = NULL;
     hFind = FindFirstFile(path, &findData);
@@ -38,13 +38,5 @@ void readFilesToStruct(struct entry ** readFiles, char * path){
         counter++;
     } while(FindNextFile(hFind, &findData) != 0);
     FindClose(hFind);
-}
-
-struct entry ** getEntryNames(char * path, int * count){
-    countFilesInDirectory(path, count);
-    struct entry ** readFiles = malloc(sizeof(struct entry *) * (*count));
-    for(int i = 0; i < *count; i++) readFiles[i] = malloc(sizeof(struct entry));
-    readFilesToStruct(readFiles, path);
-    return readFiles;
 }
 

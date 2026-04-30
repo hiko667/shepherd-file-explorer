@@ -7,27 +7,24 @@
 
 //I (((stole))) was inspired by this code from https://www.geeksforgeeks.org/c/linked-list-in-c/ 
 struct node * getNewLinkedList(){
-    struct node * newList = malloc(sizeof(struct node));
+    struct node * newList = NULL;
     return newList;
 }
 
 struct node * newNode(const char * path){
     struct node * new = malloc(sizeof(struct node));
+    if (!new) return NULL; 
     new->path = strdup(path);
     new->next = NULL;
     return new;
 }
 
-void push(struct node ** head, char * path){
-    if((*head)->path == NULL){
-        (*head)->path = strdup(path);
+void push(struct node ** head, const char * path){
+    struct node * temp = newNode(path);
+    if (*head != NULL) {
+        temp->next = *head;
     }
-    else{
-        struct node * temp = malloc(sizeof(struct node));
-        temp->path = strdup(path);
-        temp->next = (*head);
-        (*head) = temp;
-    }
+    *head = temp;
 }
 
 void pop(struct node ** head){
