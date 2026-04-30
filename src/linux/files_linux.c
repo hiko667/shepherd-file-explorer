@@ -8,14 +8,19 @@
 
 void countFilesInDirectory(char * path, int * count){
     int counter = 0;
-	struct dirent * entry;
-	DIR * dir = opendir(path);
-	while((entry = readdir(dir)) != NULL)
-	{
-		if (entry->d_name[0] == '.' || entry->d_type != DT_REG) continue;
-		counter ++;
-	}
-	closedir(dir);
+    struct dirent * entry;
+    DIR * dir = opendir(path);
+
+    if (dir == NULL) return; // Zawsze sprawdzaj, czy otwarto katalog
+
+    while((entry = readdir(dir)) != NULL)
+    {
+        if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0) {
+            continue;
+        }
+        counter++;
+    }
+    closedir(dir);
     (*count) = counter;
 }
 
