@@ -17,7 +17,7 @@
 void setSystemInfo(char ** separator, char ** path){
     * separator = (SYSTEM_NAME == 'w') ? strdup("\\") : strdup("/");
     if(SYSTEM_NAME == 'l') setLinuxRootPath(path); 
-    * path = strdup("C:\\");
+    else * path = strdup("C:\\");
 }
 
 void setCurrentDir(struct state * globalState){
