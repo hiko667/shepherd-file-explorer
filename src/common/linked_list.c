@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "system.h"
 #include "linked_list.h"
-
+#include "linux_utlis.h"
 
 //I (((stole))) was inspired by this code from https://www.geeksforgeeks.org/c/linked-list-in-c/ 
 struct node * getNewLinkedList(){
@@ -13,7 +13,6 @@ struct node * getNewLinkedList(){
 
 struct node * newNode(const char * path){
     struct node * new = malloc(sizeof(struct node));
-    if (!new) return NULL; 
     new->path = strdup(path);
     new->next = NULL;
     return new;
@@ -45,3 +44,15 @@ void freeLinkedList(struct node ** head){
     }
     *head = NULL;
 }
+
+// char * getRoot(struct node ** head){
+//     if(head == NULL || * head == NULL){
+//         if(SYSTEM_NAME == 'w') return "C:\\"
+//         else return;       
+//     }
+//     struct node *temp = (*head);
+//     while (temp != NULL){
+//         struct node *next = temp->next;
+//         temp = next;
+//     }
+// }    

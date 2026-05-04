@@ -1,10 +1,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <pwd.h>
-#include <sys/types.h>
-#include <unistd.h>
+
 #include "system.h"
+#include "linux_utlis.h"
 #include "open_window.h"
 #include "runtime.h"
 #include "files.h"
@@ -12,16 +11,12 @@
 #include "terminal_menu.h"
 #include "state.h"
 #include "command.h"
+// #include "gui.c"
 
 
 void setSystemInfo(char ** separator, char ** path){
     * separator = (SYSTEM_NAME == 'w') ? strdup("\\") : strdup("/");
-    if(SYSTEM_NAME == 'l'){
-        struct passwd *pw = getpwuid(geteuid());
-        char * temp = malloc((strlen(pw->pw_dir) + 2) * sizeof(char));
-        sprintf(temp, "%s/", pw->pw_dir);
-        *path = strdup(temp); free(temp); return;
-    }
+    if(SYSTEM_NAME == 'l') setLinuxRootPath(path); 
     * path = strdup("C:\\");
 }
 
@@ -106,9 +101,7 @@ void evaluateCommand(command_t com, struct state * globalState){
         }
         break;
     case SHEPHERD_GO_BACK:
-        struct passwd *pw = getpwuid(geteuid());
-        char * temp = malloc((strlen(pw->pw_dir) + 2) * sizeof(char));
-        sprintf(temp, "%s/", pw->pw_dir);
+        char * temp = getLinuxRootPath();
         if(strcmp(globalState->path, "C:\\") != 0 && strcmp(globalState->path, temp) != 0)
         {
             goBack(globalState);
@@ -140,11 +133,16 @@ void evaluateCommand(command_t com, struct state * globalState){
 void run(){
     struct state globalState;
     loadDefaultState(&globalState);
-    
-    while (!globalState.over){
-        command_t com = runTerminalMenu(globalState.currentDir, globalState.count, &(globalState.position));
-        evaluateCommand(com, &globalState);
+    bool debugUI = false;
+    if(!debugUI){
+        while (!globalState.over){
+            command_t com = runTerminalMenu(globalState.currentDir, globalState.count, &(globalState.position));
+            evaluateCommand(com, &globalState);
+        }
     }
+    else{
+        
+    }    
     freeGlobalState(&globalState);
 
 }

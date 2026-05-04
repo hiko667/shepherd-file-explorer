@@ -12,7 +12,7 @@ void freeEntries(struct entry ** entries, int count){
     }
     free(entries);
 }
-
+ 
 void goBack(struct state * globalState){
     pop(&(globalState->dirCache));
     free(globalState->path);
